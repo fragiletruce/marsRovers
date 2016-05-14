@@ -33,10 +33,11 @@ marsRovers.rover = function(name,x,y,heading) {
 	this.y = y;
 	this.heading = heading;
 
+
 };
 marsRovers.XMax = 0;
 marsRovers.YMax = 0;
-
+marsRovers.startPosition = {};
 marsRovers.parseMoves = function() {
 
 	for (i=0;i<this.rovers.length;i++) {
@@ -51,8 +52,7 @@ marsRovers.parseMoves = function() {
 };
 marsRovers.execute = function(rover,step) {
     var instruction = rover.instructions[step];
-    //console.log('rover pos before: ' + rover.x + ' ' + rover.y + ' ' + rover.heading);
-    //console.log(instruction);
+
    switch (instruction) {
        case 'L':
            this.changeHeading(rover,this.directions.L);
@@ -76,6 +76,7 @@ marsRovers.changeHeading = function(rover,sign,degrees) {
 	if (newheading < -360) newheading  += 360;
 	if (newheading===0) newheading=360;
 	rover.heading = newheading;
+	return newheading;
 };
 marsRovers.move = function(rover) {
 
@@ -99,11 +100,31 @@ marsRovers.move = function(rover) {
 };
 
 marsRovers.runInstructionSet = function(rover) {
+
+	//log original position for replay
+
+	// (typeof timespan == 'undefined') timespan=0;
     for (i=0;i<rover.instructions.length;i++) {
-			marsRovers.execute(rover, i);
+			//setTimeout(function() { marsRovers.execute(rover, i);},timespan);
+		marsRovers.execute(rover, i);
 		}
 
 };
+marsRovers.reset = function() {
+	//call this only after
+	var r1 = this.rovers[0].startPosition;
+	var r2 = this.rovers[1].startPosition;
+	this.rovers[0].x = r1.x;
+	this.rovers[0].y = r1.y;
+	this.rovers[0].heading = r1.heading;
+
+	this.rovers[1].x = r2.x;
+	this.rovers[1].y = r2.y;
+	this.rovers[1].heading = r2.heading;
+};
+marsRovers.rover1 = function() { if (this.rovers[0]) return this.rovers[0].x + ' ' + this.rovers[0].y + ' ' + this.pointsmap[this.rovers[0].heading]; else return 'No data.';};
+marsRovers.rover2 = function() { if (this.rovers[1]) return this.rovers[1].x + ' ' + this.rovers[1].y + ' ' + this.pointsmap[this.rovers[1].heading]; else return 'No data.'; };
+
 
 marsRovers.init = function(initArray) {
 
@@ -124,13 +145,14 @@ marsRovers.init = function(initArray) {
 		var heading = marsRovers.points[rover1[2]];
 
 		this.rovers.push(new this.rover('Rover 1', parseInt(rover1[0]), parseInt(rover1[1]), heading));
-
+		this.rovers[0].startPosition = new this.rover('Rover 1', parseInt(rover1[0]), parseInt(rover1[1]), heading);
 		//3rd line shows first rover's instructions as string e.g. LMLMLMLMM
 		this.rovers[0].moves = $a[2];
 		//4th line shows 2nd rovers orientation
 		var rover2 = $a[3].split(' ');
         //heading = marsRovers.points[rover2[2]];
 		this.rovers.push(new this.rover('Rover 2', parseInt(rover2[0]), parseInt(rover2[1]), marsRovers.points[rover2[2]]));
+		this.rovers[1].startPosition = new this.rover('Rover 2', parseInt(rover2[0]), parseInt(rover2[1]), marsRovers.points[rover2[2]]);
 		//5th line shows 2nd rover's instructions
 		this.rovers[1].moves = $a[4];
 
@@ -153,6 +175,12 @@ var arr  = [];
 	arr.push('MMRMMRMRRM');
 
 //marsRovers.init(arr);
+//debugger;
+//var r1 = marsRovers.rover1();
+
+
+//var x = marsRovers.changeHeading(null,marsRovers.directions.L,90);
+//marsRovers.runInstructionSet(marsRovers.rovers[0]);
 //debugger;
 //for (i=1;i<marsRovers.rovers[1].instructions.length;i++) {
 

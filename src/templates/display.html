@@ -4,7 +4,7 @@
 
     <tr ng-repeat="row in range(6) track by $index" class="{{$index}}" ng-init="rowIndex=$index" ng-class="$index">
 
-        <td ng-repeat="col in range(6) track by $index" col="{{$index}}" row="{{rowIndex}}" ng-class="formatCell(rowIndex,$index)"> {{ displayCoord(rowIndex,$index); }} </td>
+        <td ng-repeat="col in range(6) track by $index" col="{{$index}}" row="{{rowIndex}}" ng-class="roverOnIt(rowIndex,$index)" xng-class="formatCell(rowIndex,$index)"> {{ displayCoord(rowIndex,$index); }} </td>
     </tr>
 
 </table>
@@ -12,14 +12,13 @@
 
 <div>
 
-    it would be a simple matter (of a couple of hours) to execute each instruction and display it on a grid.
-
-    I've started by setting the class of each tr and td element with an indexed classed.
-
-    You could set ng-class as a function in the scope
-
-
+   Current disposition (Rover 1) : {{ marsRovers.rover1() }}<br>
+   Current disposition (Rover 2) : {{ marsRovers.rover2() }}<br>
 </div>
 
+    <div>
+        <input type="button" value="Replay" ng-click="replay();" />
+
+    </div>
 
 </div>

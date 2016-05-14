@@ -36,7 +36,6 @@ angular.module('marsApp').controller('testsController', function($scope) {
 	$scope.moveLLFromS = changeHeading(changeHeading($p.S, $d.L), $d.L);
 
 	$scope.moveRRFromS = changeHeading(changeHeading($p.S, $d.R), $d.R);
-
 	$scope.moveLFromS = changeHeading($p.S, $d.L);
 
 

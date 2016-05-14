@@ -15,3 +15,8 @@ angular.module('marsApp',['ngRoute'])
 
 ;
 
+angular.module('marsApp').factory('marsEngine', function() {
+
+  return  marsRovers;
+
+});

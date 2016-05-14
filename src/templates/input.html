@@ -2,15 +2,10 @@
 
 
 <br/>
-    input string
-    <div>
 
-        <br/>
-        max vals for x,y : {{XMax}} , {{YMax}}
 
-    </div>
 
-<h3>test input</h3>
+model input
 <div>
     5 5<br>
 1 2 N<br>
@@ -21,9 +16,8 @@ LMLMLMLMM<br>
 
 
 
-
 <h3>Output</h3>
-Rover 1: <!--{{rover1.x}} {{rover1.y}} {{rover1.heading}}-->
-{{rover1}}<br>
-Rover 2: <!--{{rover2.x}} {{rover2.y}} {{rover2.heading}}-->
-{{rover2}}<br>
+Rover 1:
+{{ marsRovers.rover1() }}<br>
+Rover 2:
+{{ marsRovers.rover2() }}<br>

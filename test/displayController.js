@@ -14,12 +14,14 @@ describe('displayController', function() {
         $controller = _$controller_;
     }));
 
-describe('formatCell', function() {
-            it('should show x and y coordinates', function () {
+describe('replay', function() {
+            it('reset to start position', function () {
                 var $scope = {};
                 var controller = $controller('displayController', { $scope: $scope });
-                expect(row).toBeGreaterThan(-1);
-                expect(row).toBeLessThan(6);
+                //expect(marsRovers.rovers[1].x).toBe(3);
+                //$scope.replay();
+
+               // expect(marsRovers.rovers[1].x).toBe(3);
 
             });
 });
