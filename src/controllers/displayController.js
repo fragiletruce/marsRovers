@@ -63,21 +63,28 @@ angular.module('marsApp').controller('displayController', function($scope,marsEn
     $scope.replay = function() {
          var app = $scope.marsRovers;
          app.reset();
-         var rover = app.rovers[1];
-
+         var rover = app.rovers[0];
+         var rover2 = app.rovers[1];
 
             var i=0;
+            var ii = 0
+
+            
+
             $interval(function(){
                 app.execute(rover,i);
                  i++;
-            }, 1000, rover.instructions.length);
+            }, 1000, rover.instructions.length)
+
+            $interval(function(){
+                app.execute(rover2,ii);
+                 ii++;
+            }, 1000, rover2.instructions.length)
 
 
 
 
-
-
-    };
+ };
 
 
 });
