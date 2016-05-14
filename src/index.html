@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <title>Mars Rover App</title>
+         <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
+        <link href="../bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+       <link href="css/mars.css" rel="stylesheet" />
+    </head>
+    <body ng-app='marsApp'>
+<div class="container">
+        <h2>Mars Rover App</h2>
+        <ul>
+            <li><a  href="#/">Input</a></li>
+            <li><a href="#/tests">Tests</a></li>
+            <li><a href="#/display">Display</a></li>
+            <li><a href="#/blabla">Other?</a></li>
+        </ul>
+
+    <input type="button" class="btn btn-primary" value="Go" />
+
+
+        <div ng-view></div>
+</div>
+       <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.js"></script>
+         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.js"></script>
+        -->
+        <script src="../bower_components/angular/angular.min.js"></script>
+         <script src="../bower_components/angular-route/angular-route.min.js"></script>
+         <script src="../bower_components/angular-animate/angular-animate.min.js"></script>
+
+        <script src="app.js"></script>
+        <script scr="services/marsEngine.js"></script>
+        <script src="controllers/testsController.js"></script>
+        <script src="controllers/displayController.js"></script>
+        <script src="controllers/inputController.js"></script>
+        <script src="mars-core.js"></script>
+        <script src="utils.js"></script>
+        <script src="../bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+
+
+    </body>
+</html>
