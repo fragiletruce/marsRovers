@@ -1,7 +1,7 @@
 /**
  * Created by kenmiller on 12/05/2016.
  */
-angular.module('marsApp').controller('displayController', function($scope,marsEngine,$interval) {
+angular.module('marsApp').controller('displayController', function($scope,marsEngine,$interval,$q) {
 
     //add a service to share the input and the marsRover app
 
@@ -10,7 +10,7 @@ angular.module('marsApp').controller('displayController', function($scope,marsEn
     //set each cell with classes using ng-class so that a cell where rover1 is stationed with a southerly orientation
     //bears the classes rover1 south
     $scope.marsRovers = marsEngine;
-
+    $scope.interval = 1000;
 
     $scope.rover1 = $scope.marsRovers.rovers[0];
     $scope.rover2 = $scope.marsRovers.rovers[1];
@@ -29,25 +29,24 @@ angular.module('marsApp').controller('displayController', function($scope,marsEn
     };
 
     $scope.roverOnIt = function(row,col) {
-
-        var coords = $scope.tableCoordToGrid(row,col);
-
         var css = '';
+        if ($scope.marsRovers.rovers.length>0) {
 
-        var rover1 = $scope.marsRovers.rovers[0];
+            var coords = $scope.tableCoordToGrid(row, col);
+            var rover1 = $scope.marsRovers.rovers[0];
 
-        if ( rover1.x == coords.x && rover1.y == coords.y) {
-            css +=  'pink';
-            css += $scope.appendCompassCss(rover1.heading);
+            if (rover1.x == coords.x && rover1.y == coords.y) {
+                css += 'pink';
+                css += $scope.appendCompassCss(rover1.heading);
+            }
+
+            var rover2 = $scope.marsRovers.rovers[1];
+            if (rover2.x == coords.x && rover2.y == coords.y) {
+                css += 'red';
+                css += $scope.appendCompassCss(rover2.heading);
+            }
         }
-
-        var rover2 = $scope.marsRovers.rovers[1];
-        if ( rover2.x == coords.x && rover2.y == coords.y) { css += 'red';
-        css+=$scope.appendCompassCss(rover2.heading);
-        }
-
         return css;
-
     };
 
     $scope.appendCompassCss=function(heading) {
@@ -99,30 +98,36 @@ angular.module('marsApp').controller('displayController', function($scope,marsEn
         return ((row - 5) * -1);
     };
 
+$scope.runRover = function(rover,rover2) {
+     var i=0;
 
+        var span=1000;
+
+         var app = $scope.marsRovers;
+         app.reset();
+
+         $interval(function(){
+                app.execute(rover,i);
+                 i++;
+                //$scope.apply();
+                if (i==rover.instructions.length-1) {
+                    if (typeof(rover2)!='undefined')
+                        $scope.runRover(rover2);
+                }
+            }, span, rover.instructions.length);
+
+    };
 
 
     $scope.replay = function() {
-         var app = $scope.marsRovers;
-         app.reset();
-         var rover = app.rovers[0];
+ var app = $scope.marsRovers;
+         var rover1 = app.rovers[0];
          var rover2 = app.rovers[1];
 
-            var i=0;
-            var ii = 0;
 
-            var span=3000;
 
-            $interval(function(){
-                app.execute(rover,i);
-                 i++;
-                $scope.apply();
-            }, span, rover.instructions.length);
 
-            $interval(function(){
-                app.execute(rover2,ii);
-                 ii++;
-            }, span, rover2.instructions.length);
+           $scope.runRover(rover1,rover2);
 
 
 

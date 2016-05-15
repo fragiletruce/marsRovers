@@ -4,7 +4,7 @@
 /**
  * Created by kenmiller on 12/05/2016.
  */
-angular.module('marsApp').controller('inputController', function($scope,marsEngine) {
+angular.module('marsApp').controller('inputController', function($scope,marsEngine,$location) {
 
 
 
@@ -14,6 +14,7 @@ angular.module('marsApp').controller('inputController', function($scope,marsEngi
     $scope.marsRovers = marsEngine;
     $scope.rover1 = null;
     $scope.rover2 = null;
+
     $scope.parseInput = function() {
 
 
@@ -23,18 +24,7 @@ angular.module('marsApp').controller('inputController', function($scope,marsEngi
         $scope.marsRovers.init($scope.inputarray);
         if ($scope.marsRovers.rovers.length==2) {
 
-
-            //run instructions
-
-            for (r = 0; r < $scope.marsRovers.rovers.length; r++) {
-
-              //  $scope.marsRovers.runInstructionSet($scope.marsRovers.rovers[r]);
-            }
-
-            //$scope.r1 = $scope.marsRovers.rovers[0];
-            //$scope.r2 = $scope.marsRovers.rovers[1];
-           // $scope.rover1 = $scope.r1.x + ' ' + $scope.r1.y + ' ' + marsRovers.pointsmap[$scope.r1.heading];
-            //$scope.rover2 = $scope.r2.x + ' ' + $scope.r2.y + ' ' + marsRovers.pointsmap[$scope.r2.heading];
+            //$location.path('#/display')
 
         }
 
