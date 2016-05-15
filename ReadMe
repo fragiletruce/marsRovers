@@ -1,6 +1,8 @@
-angular test environment set up after tutorial at
 
-http://technology.finra.org/code/setting-up-angular-using-grunt.html
+Mars rovers exercise.
 
-make a copy of the template
-RUN ‘npm install’ and ‘bower install’ to set up all packages in the template
+Download source.
+
+RUN ‘npm install’ and ‘bower install’ to set up all packages in the template. (Requires node.js)
+
+Open src/index.html in a browser and follow instructions.
