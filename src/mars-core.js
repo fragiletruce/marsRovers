@@ -66,6 +66,7 @@ marsRovers.execute = function(rover,step) {
            break;
    }
 };
+
 marsRovers.changeHeading = function(rover,sign,degrees) {
 
 

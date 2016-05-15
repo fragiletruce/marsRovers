@@ -18,12 +18,46 @@ describe('replay', function() {
             it('reset to start position', function () {
                 var $scope = {};
                 var controller = $controller('displayController', { $scope: $scope });
-                //expect(marsRovers.rovers[1].x).toBe(3);
-                //$scope.replay();
 
-               // expect(marsRovers.rovers[1].x).toBe(3);
 
             });
+
+
+
+});
+
+
+   describe('tableCoordToGrid', function() {
+            it('should map table row and col to x,y coords', function () {
+                var $scope = {};
+                var controller = $controller('displayController', { $scope: $scope });
+
+                var row= 5,col=0;
+                var coords = $scope.tableCoordToGrid(row,col);
+
+                expect(coords.x).toBe(0);
+                expect(coords.y).toBe(0);
+
+                 row= 0;col=0;
+                 coords = $scope.tableCoordToGrid(0,0);
+
+                expect(coords.x).toBe(0);
+                expect(coords.y).toBe(5);
+
+                //coords = $scope.tableCoordToGrid(2,3);
+
+                //expect(coords.x).toBe(3);
+                //expect(coords.y).toBe(3);
+
+                 //coords = $scope.tableCoordToGrid(5,1);
+
+                //expect(coords.x).toBe(0);
+                //expect(coords.y).toBe(1);
+
+            });
+
+
+
 });
 
 });

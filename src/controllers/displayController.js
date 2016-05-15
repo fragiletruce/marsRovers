@@ -30,29 +30,71 @@ angular.module('marsApp').controller('displayController', function($scope,marsEn
 
     $scope.roverOnIt = function(row,col) {
 
+        var coords = $scope.tableCoordToGrid(row,col);
 
-        var x = $scope.createXCoordFromTableRow(row);
-        var y = col;
+        var css = '';
+
         var rover1 = $scope.marsRovers.rovers[0];
-        if ( marsRovers.rovers[0].x == x && marsRovers.rovers[0].y == y) return 'blue';
+
+        if ( rover1.x == coords.x && rover1.y == coords.y) {
+            css +=  'pink';
+            css += $scope.appendCompassCss(rover1.heading);
+        }
+
         var rover2 = $scope.marsRovers.rovers[1];
-        if ( marsRovers.rovers[1].x == x && marsRovers.rovers[1].y == y) return 'red';
-        else return '';
+        if ( rover2.x == coords.x && rover2.y == coords.y) { css += 'red';
+        css+=$scope.appendCompassCss(rover2.heading);
+        }
+
+        return css;
 
     };
 
+    $scope.appendCompassCss=function(heading) {
+        var css='';
+        switch (heading) {
+                case marsRovers.points.E:
+                     css += ' glyphicon glyphicon-menu-right';
+                    break;
+                case marsRovers.points.N:
+                    css += ' glyphicon glyphicon-menu-up';
+                    break;
+                case marsRovers.points.S:
+                     css += ' glyphicon glyphicon-menu-down';
+                    break;
+                case marsRovers.points.W:
+                     css += ' glyphicon glyphicon-menu-left';
+                    break;
+                default:
+                    break;
+                //if (marsRovers.rovers[0].heading==marsRovers.points.E) css += ' glyphicon glyphicon-chevron-left';
+                //    glyphicon glyphicon-chevron-righ
+            }
+        return css;
+    };
 
     $scope.displayCoord = function(row,col) {
-        if (col===0) {return col-row + 5;}
-        else {if (row===5) return col;
-        else return '(' + $scope.createXCoordFromTableRow(row) + ',' + col +')';
+        var coords = $scope.tableCoordToGrid(row,col);
+        //if (col===0) {return col-row + 5;}
+        //else {if (row===5) return col;
+        //else return '(' + coords.x + ',' + coords.y +')';
 
-        }
-            //return ''; //col;
+        //}
+        return '(' + coords.x + ',' + coords.y +')';
+    };
+
+    $scope.tableCoordToGrid = function(row,col) {
+
+        return {
+
+            'x' : col,
+            'y' : $scope.createYCoordFromTableRow(row)
+
+        };
 
     };
 
-    $scope.createXCoordFromTableRow = function(row) {
+    $scope.createYCoordFromTableRow = function(row) {
 
         return ((row - 5) * -1);
     };
@@ -67,19 +109,20 @@ angular.module('marsApp').controller('displayController', function($scope,marsEn
          var rover2 = app.rovers[1];
 
             var i=0;
-            var ii = 0
+            var ii = 0;
 
-            
+            var span=3000;
 
             $interval(function(){
                 app.execute(rover,i);
                  i++;
-            }, 1000, rover.instructions.length)
+                $scope.apply();
+            }, span, rover.instructions.length);
 
             $interval(function(){
                 app.execute(rover2,ii);
                  ii++;
-            }, 1000, rover2.instructions.length)
+            }, span, rover2.instructions.length);
 
 
 

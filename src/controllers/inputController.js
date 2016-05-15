@@ -28,7 +28,7 @@ angular.module('marsApp').controller('inputController', function($scope,marsEngi
 
             for (r = 0; r < $scope.marsRovers.rovers.length; r++) {
 
-                $scope.marsRovers.runInstructionSet($scope.marsRovers.rovers[r]);
+              //  $scope.marsRovers.runInstructionSet($scope.marsRovers.rovers[r]);
             }
 
             //$scope.r1 = $scope.marsRovers.rovers[0];

@@ -1,40 +1,26 @@
 <?xml version="1.0"?>
-<testsuite name="PhantomJS 2.1.1 (Mac OS X 0.0.0)" package="" timestamp="2016-05-14T17:36:32" id="0" hostname="kens-MacBook-Pro.local" tests="17" errors="0" failures="3" time="0.05">
+<testsuite name="PhantomJS 2.1.1 (Mac OS X 0.0.0)" package="" timestamp="2016-05-15T08:23:10" id="0" hostname="kens-MacBook-Pro.local" tests="18" errors="0" failures="0" time="0.049">
   <properties>
     <property name="browser.fullName" value="Mozilla/5.0 (Macintosh; Intel Mac OS X) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1"/>
   </properties>
   <testcase name="app should work" time="0.002" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).app"/>
-  <testcase name="displayController replay reset to start position" time="0.011" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).displayController"/>
-  <testcase name="testsController $scope.moveRFromN should return 90" time="0.003" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).testsController"/>
+  <testcase name="displayController replay reset to start position" time="0.012" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).displayController"/>
+  <testcase name="displayController tableCoordToGrid should map table row and col to x,y coords" time="0.002" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).displayController"/>
+  <testcase name="testsController $scope.moveRFromN should return 90" time="0.002" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).testsController"/>
   <testcase name="testsController variable E should be 90" time="0.002" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).testsController"/>
-  <testcase name="testsController $scope.moveLFromN should return west" time="0.001" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).testsController"/>
-  <testcase name="testsController $scope.moveLFromW should return south" time="0.004" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).testsController"/>
-  <testcase name="testsController $scope.moveLLFromN should return south" time="0.004" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).testsController"/>
-  <testcase name="testsController $scope.moveRRFromN should return south" time="0.002" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).testsController"/>
-  <testcase name="testsController $scope.moveLLFromW should return east" time="0.002" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).testsController"/>
-  <testcase name="testsController $scope.moveRRFromW should return east" time="0.005" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).testsController"/>
+  <testcase name="testsController $scope.moveLFromN should return west" time="0.003" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).testsController"/>
+  <testcase name="testsController $scope.moveLFromW should return south" time="0.001" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).testsController"/>
+  <testcase name="testsController $scope.moveLLFromN should return south" time="0.001" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).testsController"/>
+  <testcase name="testsController $scope.moveRRFromN should return south" time="0.001" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).testsController"/>
+  <testcase name="testsController $scope.moveLLFromW should return east" time="0.01" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).testsController"/>
+  <testcase name="testsController $scope.moveRRFromW should return east" time="0.002" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).testsController"/>
   <testcase name="testsController $scope.moveLLFromS should return north" time="0.002" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).testsController"/>
-  <testcase name="testsController $scope.moveRRFromS should return north" time="0.002" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).testsController"/>
-  <testcase name="testsController $scope.moveLFromS should return east" time="0.003" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).testsController"/>
+  <testcase name="testsController $scope.moveRRFromS should return north" time="0.003" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).testsController"/>
+  <testcase name="testsController $scope.moveLFromS should return east" time="0.001" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).testsController"/>
   <testcase name="testsController $scope.rovers[1].heading should be east" time="0.001" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).testsController"/>
-  <testcase name="testsController Instructions rover 2 instruction 3 should be R" time="0.003" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).testsController">
-    <failure type="">TypeError: undefined is not an object (evaluating 'marsRovers.rovers[1].instructions[2]') in /Users/kenmiller/Documents/angularTest/marsProblem/marsRovers/test/mars-core.js (line 149)
-/Users/kenmiller/Documents/angularTest/marsProblem/marsRovers/test/mars-core.js:149:57
-</failure>
-  </testcase>
-  <testcase name="testsController Execution FIRST STEP rover 2 instruction result set should be 4 3 E" time="0.002" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).testsController">
-    <failure type="">TypeError: undefined is not an object (evaluating 'rover.instructions[step]') in /Users/kenmiller/Documents/angularTest/marsProblem/marsRovers/src/mars-core.js (line 9)
-execute@/Users/kenmiller/Documents/angularTest/marsProblem/marsRovers/src/mars-core.js:9:2695
-r2exec1@/Users/kenmiller/Documents/angularTest/marsProblem/marsRovers/src/controllers/testsController.js:9:1629
-/Users/kenmiller/Documents/angularTest/marsProblem/marsRovers/test/mars-core.js:160:31
-</failure>
-  </testcase>
-  <testcase name="testsController Execute remaining steps rover 2 instruction result set should be 5 1 E" time="0.001" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).testsController">
-    <failure type="">TypeError: undefined is not an object (evaluating '$scope.rover2.instructions.length') in /Users/kenmiller/Documents/angularTest/marsProblem/marsRovers/src/controllers/testsController.js (line 9)
-r2execAll@/Users/kenmiller/Documents/angularTest/marsProblem/marsRovers/src/controllers/testsController.js:9:1938
-/Users/kenmiller/Documents/angularTest/marsProblem/marsRovers/test/mars-core.js:175:33
-</failure>
-  </testcase>
+  <testcase name="testsController Instructions rover 2 instruction 3 should be R" time="0.001" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).testsController"/>
+  <testcase name="testsController Execution FIRST STEP rover 2 instruction result set should be 4 3 E" time="0.001" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).testsController"/>
+  <testcase name="testsController Execute remaining steps rover 2 instruction result set should be 5 1 E" time="0.002" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).testsController"/>
   <system-out>
     <![CDATA[
 ]]>

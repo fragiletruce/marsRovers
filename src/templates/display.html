@@ -4,7 +4,8 @@
 
     <tr ng-repeat="row in range(6) track by $index" class="{{$index}}" ng-init="rowIndex=$index" ng-class="$index">
 
-        <td ng-repeat="col in range(6) track by $index" col="{{$index}}" row="{{rowIndex}}" ng-class="roverOnIt(rowIndex,$index)" xng-class="formatCell(rowIndex,$index)"> {{ displayCoord(rowIndex,$index); }} </td>
+        <td ng-repeat="col in range(6) track by $index" col="{{$index}}" row="{{rowIndex}}" ng-class="roverOnIt(rowIndex,$index)" xng-class="formatCell(rowIndex,$index)"> {{ displayCoord(rowIndex,$index); }}<br>
+       <span style="font-size:xx-small">row: {{rowIndex}},col:{{$index}}</span></td>
     </tr>
 
 </table>
@@ -12,8 +13,8 @@
 
 <div>
 
-   Current disposition (Rover 1) : {{ marsRovers.rover1() }}<br>
-   Current disposition (Rover 2) : {{ marsRovers.rover2() }}<br>
+   Current disposition (<span class="pink">Rover 1</span>) : {{marsRovers.rover1() }}<br>
+   Current disposition (<span class="red">Rover 2)</span> : {{ marsRovers.rover2() }}<br>
 </div>
 
     <div>
